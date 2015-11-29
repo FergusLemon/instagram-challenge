@@ -51,4 +51,15 @@ feature "photos" do
     end
   end
 
+  context "deleting photos" do
+    let!(:photo) { Photo.create(description: 'Winter holiday') }
+
+    scenario "a user can delete a photo" do
+      visit '/'
+      click_link 'Delete Winter holiday'
+      expect(current_path).to eq '/photos'
+      expect(page).not_to have_content 'Winter holiday'
+    end
+  end
+
 end
