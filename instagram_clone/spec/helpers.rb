@@ -9,4 +9,11 @@ module Helpers
     click_button 'Sign up'
   end
 
+  def add_photo(description)
+    visit '/'
+    click_link 'Add a photo'
+    fill_in 'Description', with: description
+    click_button 'Publish photo'
+  end
+
 end
