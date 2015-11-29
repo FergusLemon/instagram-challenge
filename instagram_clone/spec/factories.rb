@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :photo do
+    description "MyString"
+  end
+
   factory :user do
     email "fergus@email.com"
     password  "password2"

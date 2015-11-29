@@ -1,2 +1,7 @@
-No photos have been added yet
+- if Photo.all.any?
+  - Photo.all.each do |photo|
+    %h2= photo.description
+- else
+  %h1 No photos have been added yet
+
 %a(href='#') Add a photo
