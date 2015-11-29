@@ -1,1 +1,9 @@
 %p= @photo.description
+
+- if @photo.comments.any?
+  %ul
+    - @photo.comments.each do |comment|
+      %li
+        = comment.thoughts
+- else
+  %p No comments
