@@ -1,6 +1,7 @@
 - if @photos.any?
   - @photos.each do |photo|
     = link_to photo.description, photo_path(photo)
+    = link_to "Edit #{photo.description}", edit_photo_path(photo)
 - else
   %h1 No photos have been added yet
 

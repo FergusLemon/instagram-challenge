@@ -27,10 +27,9 @@ feature "photos" do
     end
   end
 
-
   context "viewing photos" do
-  let!(:photo) { Photo.create(description: 'Winter holiday') }
-  
+    let!(:photo) { Photo.create(description: 'Winter holiday') }
+
     scenario "a user can view an individual photo" do
       visit '/'
       click_link 'Winter holiday'
@@ -38,4 +37,18 @@ feature "photos" do
       expect(page).to have_content 'Winter holiday'
     end
   end
+
+  context "editing photos" do
+    let!(:photo) { Photo.create(description: 'Winter holiday') }
+
+    scenario "a user can edit a photo" do
+      visit '/'
+      click_link 'Edit Winter holiday'
+      fill_in 'Description', with: 'Winter 2015'
+      click_button 'Update photo'
+      expect(current_path).to eq '/photos'
+      expect(page).to have_content 'Winter 2015'
+    end
+  end
+
 end
