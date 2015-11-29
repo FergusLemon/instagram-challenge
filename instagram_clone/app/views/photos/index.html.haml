@@ -4,6 +4,14 @@
     = link_to "Edit #{photo.description}", edit_photo_path(photo)
     = link_to "Delete #{photo.description}", photo_path(photo), method: :delete
     = link_to "Comment on #{photo.description}", new_photo_comment_path(photo)
+
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.thoughts
+    - else
+      %p No comments
 - else
   %h1 No photos have been added yet
 
