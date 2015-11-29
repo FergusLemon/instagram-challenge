@@ -9,8 +9,8 @@ feature "photos" do
     end
   end
 
-  let(:user) { FactoryGirl.build :user }
-  let(:user2) { FactoryGirl.build :user }
+  let(:user) { build :user }
+  let(:user2) { build :user }
 
   before do
     sign_up(user)
