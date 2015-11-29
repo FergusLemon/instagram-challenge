@@ -26,4 +26,13 @@ feature "photos" do
       expect(page).to have_content 'Summer holiday'
     end
   end
+
+  context "viewing photos" do
+    scenario "a user can view an individual photo" do
+      visit '/'
+      click_link 'Summer holiday'
+      expect(current_path).to eq "/photos/#{summer_holiday.id}"
+      expect(page).to have_content 'Summer holiday'
+    end
+  end
 end
