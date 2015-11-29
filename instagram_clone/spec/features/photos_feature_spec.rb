@@ -21,7 +21,7 @@ feature "photos" do
       visit '/'
       click_link 'Add a photo'
       fill_in 'Description', with: 'Summer holiday'
-      click_button 'Upload photo'
+      click_button 'Publish photo'
       expect(current_path).to eq '/photos'
       expect(page).to have_content 'Summer holiday'
     end
