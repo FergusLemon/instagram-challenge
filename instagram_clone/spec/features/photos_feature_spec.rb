@@ -58,6 +58,7 @@ feature "photos" do
       visit '/'
       click_link 'Delete Winter holiday'
       expect(current_path).to eq '/photos'
+      expect(page).to have_content 'Photo deleted successfully'
       expect(page).not_to have_content 'Winter holiday'
     end
   end

@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :photo do
+FactoryGirl.define do  factory :comment do
+    thoughts "MyString"
+  end
+  factory :photo do
     description "MyString"
   end
 
