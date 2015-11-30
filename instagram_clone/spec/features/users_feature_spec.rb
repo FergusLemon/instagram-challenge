@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "User can sign in and out:" do
 
   let(:user) { build :user }
-  let(:user2) { build :user }
+  let(:user2) { build :user2 }
 
   context "user not signed in and on the homepage" do
     it "should see a 'sign in' link and a 'sign up' link" do
@@ -20,12 +20,7 @@ feature "User can sign in and out:" do
 
   context "user signed in and on the hompage" do
     before do
-      visit '/'
-      click_link 'Sign up'
-      fill_in 'Email', with: 'test@test.com'
-      fill_in 'Password', with: 'password1'
-      fill_in 'Password confirmation', with: 'password1'
-      click_button 'Sign up'
+      sign_up(user)
     end
 
     it "should see the 'sign out' link" do
@@ -49,25 +44,23 @@ feature "User can sign in and out:" do
 end
 
 feature 'user can only delete a photo it added' do
-  let!(:photo) { Photo.create(description: 'Winter 2015') }
 
-  xit "cannot delete a photo it did not add" do
+  it "cannot delete a photo it did not add" do
     sign_up(user)
-    add_photo(photo)
+    add_photo('Winter 2015')
     click_link 'Sign out'
     sign_up(user2)
-    visit '/photos'
+    # save_and_open_page
     click_link 'Delete Winter 2015'
     expect(page).to have_content("You cannot delete another user's photos")
   end
 end
 
 feature 'user can only edit a photo it added' do
-  let!(:photo) { Photo.create(description: 'Winter 2015') }
 
   xit "cannot edit a photo it did not add" do
     sign_up(user)
-    add_photo(photo)
+    add_photo('Winter 2015')
     click_link 'Sign out'
     sign_up(user2)
     visit '/photos'
